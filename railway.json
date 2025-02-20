@@ -1,0 +1,6 @@
+{
+    "build": {
+        "env": "php"
+    },
+    "run": "bash start.sh"
+}

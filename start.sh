@@ -1,0 +1,1 @@
+Accounts that are not reactivated will be deleted automatically after 20-60 days. Accounts cannot be deleted earlier on request.
